@@ -49,7 +49,7 @@ public class AppointmentService {
         return modelMapper.map(save, AppointmentDTO.class);
     }
 
-    public List<AppointmentDTO> GetAllAppointment(){
+    public List<AppointmentDTO> getAllAppointment(){
          List<Appointment> appointment = appointmentRepo.findAll();
 
          return appointment.stream()
@@ -63,6 +63,16 @@ public class AppointmentService {
         return appointments.stream()
                 .map(ap -> modelMapper.map(ap, AppointmentDTO.class))
                 .toList();
+    }
+
+    public String deleteById(Long id){
+        Appointment find = appointmentRepo.findById(id).orElseThrow(
+                () -> new RuntimeException("patent is not present with given ID: "+ id)
+        );
+
+        appointmentRepo.deleteById(id);
+
+        return "patient deleted with id "+ id;
     }
 }
 

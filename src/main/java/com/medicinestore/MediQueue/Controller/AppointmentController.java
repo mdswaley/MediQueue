@@ -22,6 +22,11 @@ public class AppointmentController {
         return ResponseEntity.ok(appointmentService.createAppointment(appointmentDTO));
     }
 
+    @GetMapping("/getAllAppointment")
+    public ResponseEntity<List<AppointmentDTO>> getAllAppointment(){
+        return ResponseEntity.ok(appointmentService.getAllAppointment());
+    }
+
     @GetMapping("/date/{date}")
     public ResponseEntity<List<AppointmentDTO>> getAppointmentByDate(@PathVariable LocalDate date) {
         return ResponseEntity.ok(appointmentService.getAppointmentByDate(date));
