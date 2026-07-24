@@ -16,6 +16,10 @@ import java.util.List;
 public class AppointmentController {
     private final AppointmentService appointmentService;
 
+    @GetMapping("/")
+    public String home() {
+        return "index";
+    }
 
     @PostMapping("/create")
     public ResponseEntity<AppointmentDTO> createAppointment(@RequestBody AppointmentDTO appointmentDTO){
