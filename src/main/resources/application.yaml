@@ -2,6 +2,20 @@ spring:
   application:
     name: MediQueue
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/medi_queue
+    username: postgres
+    password: 2003
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -15,6 +29,3 @@ spring:
             enable: true
 
 
-msg91:
-  auth-key: 553059AGZuFj7x6a60d79aP1
-  template-id: 6a60d6491ddc86f5e508bec3

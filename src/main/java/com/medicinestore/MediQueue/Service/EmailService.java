@@ -29,7 +29,9 @@ public class EmailService {
                 Date: %s
                 Time: %s
                 Token Number: %d
-
+                
+                Please arrive at least 10 minutes before your scheduled appointment.
+                
                 Thank you.
                 """
                         .formatted(

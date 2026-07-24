@@ -16,7 +16,6 @@ import java.util.Optional;
 public class AppointmentService {
     private final AppointmentRepo appointmentRepo;
     private final ModelMapper modelMapper;
-    private final SmsService smsService;
     private final EmailService emailService;
 
     public AppointmentDTO createAppointment(AppointmentDTO appointmentDTO){
@@ -40,11 +39,6 @@ public class AppointmentService {
             System.err.println("Email sending failed: " + e.getMessage());
         }
 
-        try {
-            smsService.sendAppointmentSms(save);
-        } catch (Exception e) {
-            System.err.println("SMS sending failed: " + e.getMessage());
-        }
 
         return modelMapper.map(save, AppointmentDTO.class);
     }

@@ -2,8 +2,8 @@ package com.medicinestore.MediQueue.Controller;
 
 import com.medicinestore.MediQueue.DTO.AppointmentDTO;
 import com.medicinestore.MediQueue.Service.AppointmentService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ public class AppointmentController {
 
     @PostMapping("/create")
     public ResponseEntity<AppointmentDTO> createAppointment(@RequestBody AppointmentDTO appointmentDTO){
-        return ResponseEntity.ok(appointmentService.createAppointment(appointmentDTO));
+        return new ResponseEntity<>(appointmentService.createAppointment(appointmentDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/getAllAppointment")
@@ -30,5 +30,10 @@ public class AppointmentController {
     @GetMapping("/date/{date}")
     public ResponseEntity<List<AppointmentDTO>> getAppointmentByDate(@PathVariable LocalDate date) {
         return ResponseEntity.ok(appointmentService.getAppointmentByDate(date));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteAppointmentById(@PathVariable Long id){
+        return new ResponseEntity<>(appointmentService.deleteById(id), HttpStatus.ACCEPTED);
     }
 }
